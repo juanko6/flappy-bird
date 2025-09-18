@@ -119,7 +119,7 @@ void MainMenuState::render()
     DrawRectangle(0, 450, 288, 62, BROWN);
 
     // Instrucciones para el jugador
-    DrawText("Press SPACE to fly!", 50, 50, 20, DARKGRAY);
+    DrawText("Press <- ^ -> to move!", 35, 50, 20, DARKGRAY);
     DrawText("Press ESC to exit", 50, 80, 16, GRAY);
 
     // Mostrar autor
