@@ -1,6 +1,13 @@
 #pragma once
 #include <GameState.hpp>
 
+struct Bird
+{
+    float x, y;
+    float vy, vx;
+
+};
+
 class MainMenuState : public GameState
 {
     public:
@@ -17,6 +24,7 @@ class MainMenuState : public GameState
 
     
     private:
-        char entered_key;
-        bool key_pressed;
+        Bird bird; //variable de tipo Bird
+        char entered_key; // Variable para almacenar la tecla presionada
+        bool key_pressed; // Bandera para indicar si se ha presionado una tecla
 };

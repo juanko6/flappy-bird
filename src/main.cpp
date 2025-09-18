@@ -22,9 +22,7 @@ int main()
     while (!WindowShouldClose() && !state_machine.is_game_ending())
     {
         // Calcular delta time
-        current_time = std::chrono::steady_clock::now();
-        delta_time = std::chrono::duration<float>(current_time - last_time).count();
-        last_time = current_time;
+        float delta_time = GetFrameTime();
 
         state_machine.handle_state_changes(delta_time);
         state_machine.getCurrentState()->update(delta_time);
