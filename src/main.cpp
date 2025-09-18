@@ -2,9 +2,11 @@
 #include <MainMenuState.hpp>
 #include <memory>
 #include <chrono>
+#include <raylib.h>
 
 int main()
 {
+    
     //Implement the main loop with delta time
     std::chrono::steady_clock::time_point last_time = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point current_time;
@@ -12,14 +14,23 @@ int main()
 
     StateMachine state_machine = StateMachine();
     state_machine.add_state(std::make_unique<MainMenuState>(), false);
+    
+    InitWindow(288, 512, "State Machine Example");
+
     state_machine.handle_state_changes(delta_time);
 
-    while (!state_machine.is_game_ending())
+    while (!WindowShouldClose() && !state_machine.is_game_ending())
     {
+        // Calcular delta time
+        current_time = std::chrono::steady_clock::now();
+        delta_time = std::chrono::duration<float>(current_time - last_time).count();
+        last_time = current_time;
+
         state_machine.handle_state_changes(delta_time);
         state_machine.getCurrentState()->update(delta_time);
         state_machine.getCurrentState()->render();       
     }
 
+    CloseWindow();
     return 0;
 }

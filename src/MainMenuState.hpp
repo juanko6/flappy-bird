@@ -18,4 +18,5 @@ class MainMenuState : public GameState
     
     private:
         char entered_key;
+        bool key_pressed;
 };
